@@ -1,0 +1,92 @@
+#!/bin/bash
+
+LANGUAGE="english"  # Default language, change this value depending on the preference.
+
+declare -A lang_options=([english]=1 [danish]=2)
+
+if [[ $# > 0 ]]; then
+    for i in "$@"; do
+        if [[ ${lang_options[$i]} ]]; then
+            LANGUAGE=$i
+            break
+        fi
+    done
+fi
+
+# Add translations for messages within the script, making it adaptable to different languages.
+case $LANGUAGE in
+english)
+  PRINTER="3D printer"
+  ENTER="Press [Enter]"
+  CHECK_LOGS="Please check if each ${PRINTER}'s Vendor ID and Model information are updated in the system logs (e.g., /var/log/messages, use 'dmesg').\n"
+  ;;
+danish)
+  PRINTER="3D printer"
+  ENTER="Tryk [Enter]"
+  CHECK_LOGS="Venligst tjek om hver ${PRINTER}'s Vendor ID og Model information er opdateret i systemlogfilerne (f.eks. /var/log/messages, brug 'dmesg').\n"
+  ;;
+esac
+
+# Ensure the script runs with root privileges for making necessary system changes.
+if [ "$(id -u)" != "0" ]; then
+    echo "[Error] This script must be run as root."
+    exit 1
+fi
+
+echo "Welcome to the 3D Printer Setup Script!"
+echo "This script will guide you through connecting and naming your 3D printers."
+
+# Check if 'libusb' and 'v4l2loopback' kernel modules are loaded. If not, load them automatically.
+if ! lsmod | grep -q libusb; then
+    modprobe libusb || { echo "Failed to load libusb."; exit 1; }
+fi
+if ! lsmod | grep -q v4l2loopback; then
+    modprobe v4l2loopback || { echo "Failed to load v4l2loopback."; exit 1; }
+fi
+
+# Ask the number of printers to be set up
+echo "Enter the number of 3D printers you want to connect:"
+read num_printers
+
+# Prepare the udev rules template file with one line for each printer
+cat << 'EOF' > /tmp/udev_rules.template
+# This udev rules file is used to rename USB-connected 3D printer devices in Linux systems.
+EOF
+
+# Process each printer based on user input
+for ((i = 1; i <= num_printers; i++)); do
+    # Prompt the user to plug in a new printer and wait for device detection
+    echo "Please connect printer ${i} now."
+    read -p "Press [Enter] when you're done..."
+
+    # Get Vendor ID, Model information, and save it into a variable using lsusb command
+    vendor_id=$(lsusb | grep -E '(^Bus|1A86)' | awk '{print $2}')
+    model=$(lsusb | grep -E '(^Bus|1A86)' | awk '{print $5, $6}' | cut -d' ' -f 2)
+
+    # Display the detected printer's Vendor ID and Model to the user
+    echo "Detected Printer ${i} Info: $vendor_id ($model)"
+
+    # Get a custom name for this printer and display the collected info to user
+    read -p "Enter a custom name for this printer (or press [Enter] to use '3DPrinter${i}':" printer_name)
+    printer_name=${printer_name:-3DPrinter${i}}
+
+    # Add one line to the udev rules template file for each printer
+    echo "ACTION==\"add\", SUBSYSTEM==\"tty\", ATTRS{idVendor}==\"$vendor_id\", ATTRS{product}==\"$model\", SYMLINK+=\"tty${printer_name}$i\"" >> /tmp/udev_rules.template
+done
+
+# Create a new udev rules file, load it into the system and prompt user to check logs
+cat /tmp/udev_rules.template > /etc/udev/rules.d/99-custom.rules
+udevadm control --reload-rules && udevadm trigger
+echo -e "\nPlease check if each 3D printer's Vendor ID and Model information are updated in the system logs (e.g., /var/log/messages, use 'dmesg').\n"
+
+# Create a new udev rules file, load it into the system and prompt user to check logs
+cat /tmp/udev_rules.template > /etc/udev/rules.d/99-custom.rules
+udevadm control --reload-rules && udevadm trigger
+echo -e "\nPlease check if each 3D printer's Vendor ID and Model information are updated in the system logs (e.g., /var/log/messages, use 'dmesg').\n"
+
+# Clean up temporary files used in the detection process
+find /tmp -maxdepth 1 -type f -name "libusb*v4l2loopback*" -exec rm {} \;
+rm -f /tmp/udev_rules.template
+
+echo -e "${CHECK_LOGS}"
+echo "The script has completed. Please check the system logs as suggested."
