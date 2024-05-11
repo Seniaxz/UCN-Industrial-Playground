@@ -3,11 +3,38 @@ Dokumentation for opsætning af Multi-Printerstyring ved UCN Industrial Playgrou
 
 
 ## Indholdsfortegnelse
+
+* Status
+
 * Requirements
-* Hardware 
-* Software
-* Fremgangsmetode
-* Tabel til Notater
+  * Hardware 
+  * Software
+
+* Basis opsætning
+  * Installation af Raspbian
+  * Installation af Octoprint
+    * Opsætning af Octoprint Services
+    * Indsamling af nødvendig info
+    * Octoprint Services Script
+* Extra
+  * Tabel til Notater (Opsætning af Octoprint Services)
+  * 
+
+
+## Status
+- [x] Del 1
+    - [x] Installere Raspbian og Octoprint på raspberry pi.
+    - [x] Koble flere 3d printere på en enkelt raspberry pi.
+    - [x] Semi Automastisk - Installationsscript til Octoprint Services og u-dev opsætning.
+    - [x] Installere FDM Monster med tilhørende database (Docker).
+    - [ ] Skrive og opdatere dokumentation.
+- [ ] Del 2
+    - [ ] Python Script som forbinder Octoprint API med PostgreSQL Database.
+    - [ ] Skrive og opdatere dokumentation.
+- [ ] Del 3 - Extra
+    - [ ] Guided Automatisk - Installationsscript til Octoprint Services og u-dev opsætning.
+    - [ ] Guided Automatisk - Installastionsscript til at Installere alt.
+    - [ ] Skrive og opdatere dokumentation.
 
 
 ## Requirements
