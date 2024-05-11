@@ -18,7 +18,8 @@ Dokumentation for opsætning af Multi-Printerstyring ved UCN Industrial Playgrou
     * Octoprint Services Script
 * Extra
   * Tabel til Notater (Opsætning af Octoprint Services)
-  * 
+  * Installationsscript til guided/automatisk opsætning af Octoprint Services
+  * <s>Installationsscript til guided fuld opsætning af raspberry pi</s>
 
 
 ## Status
