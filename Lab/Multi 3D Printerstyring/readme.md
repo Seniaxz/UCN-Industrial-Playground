@@ -113,12 +113,3 @@ For at lette byrden med linux terminalen, er det lavet et script som udfyldes me
 
 ### ⚠️ Under Udvikling!
 Dette projekt er under aktiv udvikling og kan have problemer. Vi værdsætter din forståelse og tålmodighed. Hvis du støder på problemer, bedes du først tjekke de åbne issues. Hvis dit problem ikke er angivet der, opret da venligst en ny problemstilling, hvor du beskriver fejlen eller problemet, du oplevede. Tak for din støtte!
-
-@misc{Multi-Printerstyring,
-  author = {Steen Holst},
-  title = {Implementering af OctoPrint & FDM Monster til Multi-Printerstyring (UCN Industrial Playground)},
-  year = {2024},
-  publisher = {GitHub},
-  journal = {GitHub repository},
-  howpublished = {\url{https://github.com/Senias/Lab/Central management of 3d-printers}},
-}
