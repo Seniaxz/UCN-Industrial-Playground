@@ -62,26 +62,21 @@ Dette github repo indeholder ikke kune scripts og dokumentation, men er også t�
 
 ## Basis opsætning ⚙️
 
-### Installation af Raspbian/Octopi
+### Installation & Opsætning af Raspbian/Octopi
+###### For at kunne opsætte Octoprint og FDM Monster, skal der først installeres et operativ system på Raspberry Pi. Dette kan gøres ved at installere Raspbian eller Octopi. Octopi er en version af Raspbian, som er optimeret til 3D-printere og Octoprint.
+###### Følg vejledningen på [Raspberry Pi's hjemmeside](https://www.raspberrypi.org/software/) for at installere Raspbian eller [Octopi's hjemmeside](https://octoprint.org/download/) for at installere Octopi.
 
-<details>
-<summary>Installation af Raspbian/Octopi</summary>
-
-![Installation af Raspbian/Octopi](https://superagi.com/wp-content/uploads/2023/09/SuperAGI-Architecture.png)
-</details>
-
-#### Opsætning af Raspbian 
 
 ### Installation af Octoprint
+###### Denne del af dokumentationen vil beskrive hvordan Octoprint installeres på Raspberry Pi. Kan droppes hvis Octopi er installeret istedet for raspbian.
 
 #### Indsamling af nødvendig info
+###### For at kunne opsætte flere 3D-printere på en enkelt Raspberry Pi, skal der indsamles information om hver enkelt printer. Dette inkluderer IP-adresse, port, brugernavn, password, USB Serial, USB Navn, USB Adresse og Octoprint API-Key.
 
-#### Opsætning af Octoprint Services
 
-#### Octoprint Services Script
 
-## Tabel til notater: 📖
-Tabel til at notere information, ved opsætning af multi printer styring.
+#### Tabel til notater: 📖
+###### Tabel til at notere information, ved opsætning af multi printer styring.
 | Nr. | Printer Navn | Lokation | OctoPrint IP  | Port | Brugernavn | Password | USB Serial | USB Navn | USB Adresse |Octoprint API-Key |
 |-----|--------------|----------|---------------|------|------------|----------|------------|----------|-------------|------------------|
 | 1   |              |          |               |      |            |          |            |          |             |                  |
@@ -96,7 +91,7 @@ Tabel til at notere information, ved opsætning af multi printer styring.
 | 10  |              |          |               |      |            |          |            |          |             |                  |
 
 
-### Eksempel: 📖
+##### Eksempel: 📖
 Eksempel med udgangspunkt i test-setup ved UCN Industrial Playground.
 | Nr. | Printer Navn | Lokation | OctoPrint IP    | Port | Brugernavn | Password | USB Serial | USB Navn | USB Adresse |Octoprint API-Key |
 |-----|--------------|----------|-----------------|------|------------|----------|------------|----------|-------------|------------------|
@@ -104,6 +99,12 @@ Eksempel med udgangspunkt i test-setup ved UCN Industrial Playground.
 | 2   | M200         | 1-2      | 192.168.251.118 | 5001 | admin      | password | AB0KDT74   | Printer2 | /dev/usb1   | API_Key_2        |
 | 3   | M300         | 1-3      | 192.168.251.118 | 5002 | admin      | password | AB0KDFPC   | Printer3 | /dev/usb2   | API_Key_3        |
 | 4   | M400         | 1-4      | 192.168.251.118 | 5003 | admin      | password | AR0K4OMU   | Printer4 | /dev/usb3   | API_Key_3        |
+
+#### Opsætning af Octoprint Services
+
+#### Octoprint Services Script
+
+
 
 
 ## Installationsscript
