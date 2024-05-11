@@ -10,7 +10,8 @@ Dokumentation for opsætning af Multi-Printerstyring ved UCN Industrial Playgrou
   * Hardware 
   * Software
 * <b>Basis opsætning</b>
-  * Installation af Raspbian
+  * Installation af Raspbian/Octopi
+    * Opsætning af Raspbian 
   * Installation af Octoprint
     * Indsamling af nødvendig info
     * Opsætning af Octoprint Services
