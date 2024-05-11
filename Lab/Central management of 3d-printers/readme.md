@@ -16,6 +16,7 @@ Dokumentation for opsætning af Multi-Printerstyring ved UCN Industrial Playgrou
     * Opsætning af Octoprint Services
     * Octoprint Services Script
 * <b>Opsætning af python script & database
+    * Python script 
 * <b>Extra</b>
   * Tabel til Notater (Opsætning af Octoprint Services)
   * Installationsscript til guided/automatisk opsætning af Octoprint Services
