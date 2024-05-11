@@ -21,7 +21,7 @@ Dokumentation for opsætning af Multi-Printerstyring ved UCN Industrial Playgrou
 
 
 ## Status
-- [x] Del 1
+- [ ] Del 1
     - [x] Installere Raspbian og Octoprint på raspberry pi.
     - [x] Koble flere 3d printere på en enkelt raspberry pi.
     - [x] Semi Automastisk - Installationsscript til Octoprint Services og u-dev opsætning.
