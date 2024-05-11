@@ -6,18 +6,17 @@ Dokumentation for opsætning af Multi-Printerstyring ved UCN Industrial Playgrou
 
 
 ## Indholdsfortegnelse
-Requirements
-Hardware 
-Software
 
-
-
-
+* Requirements
+* Hardware 
+* Software
+* Tabel
+* Fremgangsmetode
+* Tabel til Notater
 
 
 ## Requirements
 ### Hardware
-
 | Antal | Navn            |
 |-------|-----------------|
 | 1 stk | Raspberry Pi 4B |
