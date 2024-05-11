@@ -4,19 +4,21 @@ Dokumentation for opsætning af Multi-Printerstyring ved UCN Industrial Playgrou
 ## Requirements
 ### Hardware
 
-| Antal | Navn           |
-|-------|----------------|
-| 1 stk | Raspberry Pi 4B|
-| 4 stk | USB Kabler     |
-| 4 stk | 3D Printer     |
-| 1 stk | microSD        |
+| Antal | Navn            |
+|-------|-----------------|
+| 1 stk | Raspberry Pi 4B |
+| 4 stk | USB Kabler      |
+| 4 stk | 3D Printer      |
+| 1 stk | microSD         |
 
 
 ### Software
-Raspbian – Styresystem (Linux)                                           Link: https://github.com/raspberrypi
-Octoprint – Solo Printer-Firmware/Control/Monitor/Slicer Software 
-FDM Monster – Multi Printer-GUI/Control/Monitor/Info/Dashboard Software
-PostgreeSQL Database
+| Navn        | Beskrivelse                          | Link                             |
+|-------------|--------------------------------------|----------------------------------|
+| Raspbian    | Operativ System til raspberry pi     | https://github.com/raspberrypi   |
+| Octoprint   | Solo - Firmware/Controller/Dashboard | https://github.com/OctoPrint     |
+| FDM Monster | Multi - Controller/Dashboard         | https://github.com/fdm-monster   |
+| PostgreSQL  | SQL Database                         | https://github.com/postgres      |
 
 
 ## Tabel til notater:
