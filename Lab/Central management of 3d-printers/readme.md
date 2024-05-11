@@ -1,37 +1,37 @@
 # OctoPrint & FDM Monster til Multi-Printerstyring
-Dokumentation for opsætning af Multi-Printerstyring ved UCN Industrial Playground.
-
+Dokumentation og opsætning af Multi-printerstyring ved UCN Industrial Playground udspringer fra et elevprojekt på 6.semester. 
+Dette github repo indeholder ikke kune scripts og dokumentation, men er også tænkt som en trinvis vejledning til opsætning af OctoPrint og FDM Monster til styring af flere 3D-printere fra en enkelt Raspberry Pi, samt opkobling mellem Octoprint API og PostgreSQL via et python-script.
 
 ## Indholdsfortegnelse
 
 
-* <b>Status</b>
-* <b>Requirements</b>
+* <b>Status</b> ⭐
+* <b>Test Setup</b> 💻
   * Hardware 
   * Software
-* <b>Basis opsætning</b>
+* <b>Basis opsætning</b> ⚙️
   * Installation af Raspbian/Octopi
     * Opsætning af Raspbian 
   * Installation af Octoprint
     * Indsamling af nødvendig info
     * Opsætning af Octoprint Services
     * Octoprint Services Script
-* <b>Opsætning af python script & database
+* <b>Opsætning af python script & database ⚙️
     * Python script 
-* <b>Extra</b>
+* <b>Extra</b> 🛠
   * Tabel til Notater (Opsætning af Octoprint Services)
   * Installationsscript til guided/automatisk opsætning af Octoprint Services
   * <s>Installationsscript til guided fuld opsætning af raspberry pi</s>
 
 
-## Status
-- [ ] Del 1
+## Status ⭐
+- [ ] Del 1 - Opsætning af Octoprint og FDM Monster
     - [x] Installere Raspbian og Octoprint på raspberry pi.
     - [x] Koble flere 3d printere på en enkelt raspberry pi.
     - [x] Semi Automastisk - Installationsscript til Octoprint Services og u-dev opsætning.
     - [x] Installere FDM Monster med tilhørende database (Docker).
     - [ ] Skrive og opdatere dokumentation.
-- [ ] Del 2
+- [ ] Del 2 - Opsætning af python script & database
     - [ ] Python Script som forbinder Octoprint API med PostgreSQL Database.
     - [ ] Skrive og opdatere dokumentation.
 - [ ] Del 3 - Extra
@@ -40,7 +40,7 @@ Dokumentation for opsætning af Multi-Printerstyring ved UCN Industrial Playgrou
     - [ ] Skrive og opdatere dokumentation.
 
 
-## Test Setup
+## Test Setup 💻
 ### Hardware
 | Antal | Navn            |
 |-------|-----------------|
@@ -60,7 +60,7 @@ Dokumentation for opsætning af Multi-Printerstyring ved UCN Industrial Playgrou
 
 
 
-## Basis opsætning
+## Basis opsætning ⚙️
 
 ### Installation af Raspbian/Octopi
 
@@ -80,7 +80,7 @@ Dokumentation for opsætning af Multi-Printerstyring ved UCN Industrial Playgrou
 
 #### Octoprint Services Script
 
-## Tabel til notater:
+## Tabel til notater: 📖
 Tabel til at notere information, ved opsætning af multi printer styring.
 | Nr. | Printer Navn | Lokation | OctoPrint IP  | Port | Brugernavn | Password | USB Serial | USB Navn | USB Adresse |Octoprint API-Key |
 |-----|--------------|----------|---------------|------|------------|----------|------------|----------|-------------|------------------|
@@ -96,7 +96,7 @@ Tabel til at notere information, ved opsætning af multi printer styring.
 | 10  |              |          |               |      |            |          |            |          |             |                  |
 
 
-### Eksempel:
+### Eksempel: 📖
 Eksempel med udgangspunkt i test-setup ved UCN Industrial Playground.
 | Nr. | Printer Navn | Lokation | OctoPrint IP    | Port | Brugernavn | Password | USB Serial | USB Navn | USB Adresse |Octoprint API-Key |
 |-----|--------------|----------|-----------------|------|------------|----------|------------|----------|-------------|------------------|
@@ -107,5 +107,8 @@ Eksempel med udgangspunkt i test-setup ved UCN Industrial Playground.
 
 
 ## Installationsscript
-For at lette byrden med linux terminalen, er det lavet et script som udfyldes med informationen som er fundet tidligere og skrevet ind i tabellen. Auto-script som giver en guided installation og som selv samler alt informationen som skal intastes er under udvikling.
+For at lette byrden med linux terminalen, er det lavet et script som udfyldes med informationen som er fundet tidligere og skrevet ind i tabellen. Auto-script som giver en guided installation og som selv samler informationen som skal benyttes til at opsætte flere 3d-printere er planlagt, dog vil scriptet være noget af det sidste som udvikles.
 
+
+### ⚠️ Under Udvikling!
+Dette projekt er under aktiv udvikling og kan have problemer. Vi værdsætter din forståelse og tålmodighed. Hvis du støder på problemer, bedes du først tjekke de åbne issues. Hvis dit problem ikke er angivet der, opret da venligst en ny problemstilling, hvor du beskriver fejlen eller problemet, du oplevede. Tak for din støtte!
