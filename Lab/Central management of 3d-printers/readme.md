@@ -4,17 +4,19 @@ Dokumentation for opsætning af Multi-Printerstyring ved UCN Industrial Playgrou
 
 ## Indholdsfortegnelse
 
-#### * Status
-#### * Requirements
+
+* <b>Status</b>
+* <b>Requirements</b>
   * Hardware 
   * Software
-#### * Basis opsætning
+* <b>Basis opsætning</b>
   * Installation af Raspbian
   * Installation af Octoprint
     * Indsamling af nødvendig info
     * Opsætning af Octoprint Services
     * Octoprint Services Script
-#### * Extra
+* <b>Opsætning af python script & database
+* <b>Extra</b>
   * Tabel til Notater (Opsætning af Octoprint Services)
   * Installationsscript til guided/automatisk opsætning af Octoprint Services
   * <s>Installationsscript til guided fuld opsætning af raspberry pi</s>
