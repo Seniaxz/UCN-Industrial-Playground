@@ -58,9 +58,17 @@ Dokumentation for opsætning af Multi-Printerstyring ved UCN Industrial Playgrou
 | FDM Monster | Multi - Controller/Dashboard         | https://github.com/fdm-monster   |
 | PostgreSQL  | SQL Database                         | https://github.com/postgres      |
 
+
+
 ## Basis opsætning
 
 ### Installation af Raspbian/Octopi
+
+<details>
+<summary>Installation af Raspbian/Octopi</summary>
+
+![Installation af Raspbian/Octopi](https://superagi.com/wp-content/uploads/2023/09/SuperAGI-Architecture.png)
+</details>
 
 #### Opsætning af Raspbian 
 
