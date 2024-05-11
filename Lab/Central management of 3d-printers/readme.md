@@ -58,6 +58,19 @@ Dokumentation for opsætning af Multi-Printerstyring ved UCN Industrial Playgrou
 | FDM Monster | Multi - Controller/Dashboard         | https://github.com/fdm-monster   |
 | PostgreSQL  | SQL Database                         | https://github.com/postgres      |
 
+## Basis opsætning
+
+### Installation af Raspbian/Octopi
+
+#### Opsætning af Raspbian 
+
+### Installation af Octoprint
+
+#### Indsamling af nødvendig info
+
+#### Opsætning af Octoprint Services
+
+#### Octoprint Services Script
 
 ## Tabel til notater:
 Tabel til at notere information, ved opsætning af multi printer styring.
