@@ -4,19 +4,17 @@ Dokumentation for opsætning af Multi-Printerstyring ved UCN Industrial Playgrou
 
 ## Indholdsfortegnelse
 
-* Status
-
-* Requirements
+#### * Status
+#### * Requirements
   * Hardware 
   * Software
-
-* Basis opsætning
+#### * Basis opsætning
   * Installation af Raspbian
   * Installation af Octoprint
     * Opsætning af Octoprint Services
     * Indsamling af nødvendig info
     * Octoprint Services Script
-* Extra
+#### * Extra
   * Tabel til Notater (Opsætning af Octoprint Services)
   * Installationsscript til guided/automatisk opsætning af Octoprint Services
   * <s>Installationsscript til guided fuld opsætning af raspberry pi</s>
@@ -38,7 +36,7 @@ Dokumentation for opsætning af Multi-Printerstyring ved UCN Industrial Playgrou
     - [ ] Skrive og opdatere dokumentation.
 
 
-## Requirements
+## Test Setup
 ### Hardware
 | Antal | Navn            |
 |-------|-----------------|
@@ -58,8 +56,7 @@ Dokumentation for opsætning af Multi-Printerstyring ved UCN Industrial Playgrou
 
 
 ## Tabel til notater:
-Tabel til at notere information ved opsætning af Multi Printer Styring.
-
+Tabel til at notere information, ved opsætning af multi printer styring.
 | Nr. | Printer Navn | Lokation | OctoPrint IP  | Port | Brugernavn | Password | USB Serial | USB Navn | USB Adresse |Octoprint API-Key |
 |-----|--------------|----------|---------------|------|------------|----------|------------|----------|-------------|------------------|
 | 1   |              |          |               |      |            |          |            |          |             |                  |
@@ -74,9 +71,8 @@ Tabel til at notere information ved opsætning af Multi Printer Styring.
 | 10  |              |          |               |      |            |          |            |          |             |                  |
 
 
-## Eksempel:
+### Eksempel:
 Eksempel med udgangspunkt i test-setup ved UCN Industrial Playground.
-
 | Nr. | Printer Navn | Lokation | OctoPrint IP    | Port | Brugernavn | Password | USB Serial | USB Navn | USB Adresse |Octoprint API-Key |
 |-----|--------------|----------|-----------------|------|------------|----------|------------|----------|-------------|------------------|
 | 1   | M100         | 1-1      | 192.168.251.118 | 5000 | admin      | password | AM00N6SL   | Printer1 | /dev/usb0   | API_Key_1        |
