@@ -1,4 +1,11 @@
-# Tabel til notater:
+# OctoPrint & FDM Monster til Multi-Printerstyring
+Dokumentation for opsætning af Multi-Printerstyring ved UCN Industrial Playground.
+
+### Hardware
+på Raspberry med Octoprint, FDM Monster samt script til at trække data fra Octoprint API til PostgreeSQL database
+### Software
+
+## Tabel til notater:
 
 Tabel til at notere information ved opsætning af Multi Printer Styring.
 
@@ -15,7 +22,7 @@ Tabel til at notere information ved opsætning af Multi Printer Styring.
 | 9   |              |          |               |      |            |          |            |          |             |                  |
 | 10  |              |          |               |      |            |          |            |          |             |                  |
 
-# Eksempel:
+## Eksempel:
 
 Eksempel med udgangspunkt i test-setup ved UCN Industrial Playground.
 
