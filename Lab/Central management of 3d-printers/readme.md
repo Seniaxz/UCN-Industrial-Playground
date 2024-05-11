@@ -1,9 +1,23 @@
 # OctoPrint & FDM Monster til Multi-Printerstyring
 Dokumentation for opsætning af Multi-Printerstyring ved UCN Industrial Playground.
 
+## Requirements
 ### Hardware
-på Raspberry med Octoprint, FDM Monster samt script til at trække data fra Octoprint API til PostgreeSQL database
+
+| Antal | Navn           |
+|-------|----------------|
+| 1 stk | Raspberry Pi 4B|
+| 4 stk | USB Kabler     |
+| 4 stk | 3D Printer     |
+| 1 stk | microSD        |
+
+
 ### Software
+Raspbian – Styresystem (Linux)                                           Link: https://github.com/raspberrypi
+Octoprint – Solo Printer-Firmware/Control/Monitor/Slicer Software 
+FDM Monster – Multi Printer-GUI/Control/Monitor/Info/Dashboard Software
+PostgreeSQL Database
+
 
 ## Tabel til notater:
 
