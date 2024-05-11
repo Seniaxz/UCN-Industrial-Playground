@@ -1,6 +1,20 @@
 # OctoPrint & FDM Monster til Multi-Printerstyring
 Dokumentation for opsætning af Multi-Printerstyring ved UCN Industrial Playground.
 
+
+
+
+
+## Indholdsfortegnelse
+Requirements
+Hardware 
+Software
+
+
+
+
+
+
 ## Requirements
 ### Hardware
 
