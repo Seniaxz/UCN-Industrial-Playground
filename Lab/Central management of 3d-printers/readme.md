@@ -1,5 +1,27 @@
+# Tabel til notater:
+
+Tabel til at notere information ved opsætning af Multi Printer Styring.
+
 | Nr. | Printer Navn | Lokation | OctoPrint  IP | Port | Brugernavn | Password | USB Serial | USB Navn | USB Adresse |Octoprint API-Key |
 |-----|--------------|----------|---------------|------|------------|----------|------------|----------|-------------|------------------|
-| 1   | Printer 1    | 123      | 192.168.1.100 | 5000 | admin      | password | ABC123     | Printer1 | /dev/usb0   | API_Key_1        |
-| 2   | Printer 2    | 456      | 192.168.1.101 | 5000 | admin      | password | XYZ456     | Printer2 | /dev/usb1   | API_Key_2        |
-| 3   | Printer 3    | 789      | 192.168.1.102 | 5000 | admin      | password | DEF789     | Printer3 | /dev/usb2   | API_Key_3        |
+| 1   |              |          |               |      |            |          |            |          |             |                  |
+| 2   |              |          |               |      |            |          |            |          |             |                  |
+| 3   |              |          |               |      |            |          |            |          |             |                  |
+| 4   |              |          |               |      |            |          |            |          |             |                  |
+| 5   |              |          |               |      |            |          |            |          |             |                  |
+| 6   |              |          |               |      |            |          |            |          |             |                  |
+| 7   |              |          |               |      |            |          |            |          |             |                  |
+| 8   |              |          |               |      |            |          |            |          |             |                  |
+| 9   |              |          |               |      |            |          |            |          |             |                  |
+| 10  |              |          |               |      |            |          |            |          |             |                  |
+
+# Eksempel:
+
+Eksempel med udgangspunkt i test-setup ved UCN Industrial Playground.
+
+| Nr. | Printer Navn | Lokation | OctoPrint  IP | Port | Brugernavn | Password | USB Serial | USB Navn | USB Adresse |Octoprint API-Key |
+|-----|--------------|----------|---------------|------|------------|----------|------------|----------|-------------|------------------|
+| 1   | M100         | 1        | 192.168.1.100 | 5000 | admin      | password | AM00N6SL   | Printer1 | /dev/usb0   | API_Key_1        |
+| 2   | M200         | 4        | 192.168.1.101 | 5001 | admin      | password | AB0KDT74   | Printer2 | /dev/usb1   | API_Key_2        |
+| 3   | M300         | 7        | 192.168.1.102 | 5002 | admin      | password | AB0KDFPC   | Printer3 | /dev/usb2   | API_Key_3        |
+| 4   | M400         | 8        | 192.168.1.102 | 5003 | admin      | password | AR0K4OMU   | Printer4 | /dev/usb3   | API_Key_3        |
