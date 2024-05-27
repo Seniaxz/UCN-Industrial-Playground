@@ -1,6 +1,6 @@
 <!-- Repository beskrivelse -->
 # OctoPrint & FDM Monster til Multi-Printerstyring
-###### Dokumentation og opsætning af Multi-printerstyring ved UCN Industrial Playground udspringer fra et elevprojekt på 6.semester. Dette github repo indeholder ikke kune scripts og dokumentation, men er også tænkt som en trinvis vejledning til opsætning af OctoPrint og FDM Monster til styring af flere 3D-printere fra en enkelt Raspberry Pi, samt opkobling mellem Octoprint API og PostgreSQL via et python-script.
+###### Dokumentation og opsætning af Multi-Pinterstyring ved UCN Industrial Playground udspringer fra et elevprojekt på 6.semester. Dette github repo indeholder ikke kune scripts og dokumentation, men er også tænkt som en trinvis vejledning til opsætning af OctoPrint og FDM-Monster til styring af flere 3D-printere fra en enkelt Raspberry Pi, samt opkobling mellem Octoprint API og PostgreSQL via et python-script.
 
 <!-- Indholdsfortegnelse -->
 ## Indholdsfortegnelse
@@ -13,12 +13,18 @@
     * Indsamling af nødvendig info
     * Opsætning af Octoprint Services
     * Octoprint Services Script
+    * Opsætning af 3D Printer i Octoprint-Webinterface
+  * Installation af Docker & docker-compose + FDM-Monster
+    * Installation af Docker & docker-compose på Raspberry Pi
+    * Installation af FDM-Monster
+    * FDM-Monster første opstart
+* <b>Mangler</b> ⚙️
 * <b>Opsætning af python script & database</b> ⚙️
     * Python script 
 * <b>Extra</b> 🛠
   * Tabel til Notater (Opsætning af Octoprint Services)
-  * Installationsscript til guided/automatisk opsætning af Octoprint Services
-  * <s>Installationsscript til guided fuld opsætning af raspberry pi</s>
+  * Installationsscript til semi-automatisk opsætning af Octoprint services
+  * <s>Installationsscript til guided fuld opsætning af raspberry pi, 3d printere & Octoprint</s>
 
 <!-- Status -->
 ## Status ⭐
@@ -26,26 +32,29 @@
     - [x] Installere Raspbian og Octoprint på raspberry pi.
     - [x] Koble flere 3d printere på en enkelt raspberry pi.
     - [x] Semi Automastisk - Installationsscript til Octoprint Services og u-dev opsætning.
-    - [x] Installere FDM Monster med tilhørende database (Docker).
-    - [ ] Skrive, Opdatere & Uddybe Dokumentation/Guide.
+    - [x] Installere FDM Monster med tilhørende database (docker-compose).
+    - [x] Skrive dokumentation/guide Del 1.
+    - [ ] Tilføje billeder til dokumentation.
 - [ ] Del 2 - Opsætning af python script & database
-    - [ ] Python Script som forbinder Octoprint API med PostgreSQL Database.
-    - [ ] Skrive, Opdatere & Uddybe Dokumentation/Guide.
+    - [x] Basic: Python Script som forbinder Octoprint API med PostgreSQL.
+    - [ ] Final: Python Script som forbinder Octoprint API med PostgreSQL.
+    - [ ] Skrive dokumentation/guide Del 2.
+    - [ ] Tilføje billeder til dokumentation.
 - [ ] Del 3 - Extra
     - [ ] Guided Automatisk - Installationsscript til Octoprint Services og u-dev opsætning.
     - [ ] Guided Automatisk - Installastionsscript til at installere alt.
-    - [ ] Skrive, Opdatere & Uddybe Dokumentation/Guide.
+    - [ ] Skrive dokumentation/guide.
+    - [ ] Tilføje billeder til dokumentation.
 
 <!-- Test Setup -->
 ## Test Setup 💻
-### Hardware
+### Hardware                
 | Antal | Navn            |
 |-------|-----------------|
 | 1 stk | Raspberry Pi 4B |
 | 4 stk | USB Kabler      |
 | 4 stk | 3D Printer      |
 | 1 stk | microSD         |
-
 
 ### Software
 | Navn        | Beskrivelse                          | Link                             |
@@ -54,7 +63,6 @@
 | Octoprint   | Solo - Firmware/Controller/Dashboard | https://github.com/OctoPrint     |
 | FDM Monster | Multi - Controller/Dashboard         | https://github.com/fdm-monster   |
 | PostgreSQL  | SQL Database                         | https://github.com/postgres      |
-
 
 <!-- Basis Opsætning -->
 ## Basis Opsætning ⚙️
@@ -88,7 +96,7 @@
 | 9   |              |          |               |      |            |          |            |          |             |                  |
 | 10  |              |          |               |      |            |          |            |          |             |                  |
 
-
+<!-- Tabel Example -->
 #### Eksempel:
 ###### Et eksempel med udgangspunkt i test-setup ved UCN Industrial Playground.
 | Nr. | Printer Navn | Lokation | OctoPrint IP    | Port | Brugernavn | Password | USB Serial | USB Navn | USB Adresse |Octoprint API-Key |
@@ -101,7 +109,6 @@
 <!-- Octoprint Services -->
 #### Opsætning af Octoprint Services
 ###### For at kunne opsætte flere 3D-printere på en enkelt Raspberry Pi, skal der opsættes en service for hver enkelt printer. Hver service kommer til at køre en instans af Octoprint, som er forbundet til en specifik 3D-printer. For at opsætte en service, skal der oprettes en eller flere filer med navnet `octoprint(2,3,4,5,6,7).service` i mappen `/etc/systemd/system/`.
-
 
 #### Octoprint Services Script
 ###### For at lette byrden med at opsætte en service for hver enkelt printer, kan følgende script benyttes. Scriptet opretter 3 services, ud over den som allerede er oprettet via Octoprint installationen, disse kører alle en instans af Octoprint, men bliver forbundet til en specifik 3D-printer. Scriptet opretter også en regel i `udev` for at oprette en symbolisk link til hver enkelt printer. Scriptet kan køres ved at kopiere koden ind i en fil som navngives dit-filnavn-her.sh, og derefter indsætte de korrekte informationer på linjerne.
@@ -141,27 +148,24 @@ echo "SUBSYSTEM==\"tty\", ATTRS{idVendor}==\"0403\", ATTRS{idProduct}==\"6001\",
 
 ###### Når filen er rettet til, gemt og gjort eksekverbar, kan scriptet køres ved at skrive sudo bash dit-filnavn-her.sh i terminalen. Scriptet vil nu oprette 3 extra services, som kører Octoprint instanser, og en regel i `udev` for at oprette en symbolisk link til hver enkelt printer. Så hver service kører en instans af Octoprint, som er forbundet til en specifik 3D-printer. For at tjekke om services er oprettet korrekt, kan kommandoen `sudo systemctl list-units --type=service | grep octoprint` køres i terminalen. Hvis alt er oprettet korrekt, vil der være 4 services, hvoraf en er den originale Octoprint service, og de resterende 3 er de nye services.
 
-<!-- Mangler - At rette fortsættelse af Basis Opsætning -->
-## Mangler - At rette fortsættelse af Basis Opsætning ⚙️
+<!-- Fortsættelse af Basis Opsætning Docker & FDM-Monster-->
 #### Opsætning af 3D Printer i Octoprint-Webinterface
-###### For at kunne tilgå Octoprint webinterface, skal du åbne en browser og indtaste `http://<ip-adresse-til-raspberry-pi>:5000` i adresselinjen. Hvis alt er installeret korrekt, vil Octoprint starte op, og du vil blive præsenteret for en login-side. Brugernavn og password er begge `admin`.
-
-### Installere FDM Monster med tilhørende database (Docker).
-
+###### For at kunne tilgå Octoprint webinterface på den originale service, skal du åbne en browser og indtaste `http://ip-adresse-til-raspberry-pi:5000` i adresselinjen. (For adgang til web-ui ved de andre services, vælges den korrekte port, som tidligere er angivet i tabellen) Hvis alt er installeret korrekt, vil Octoprint starte op både på port 5000, 5001, 5002 & 5003, og du vil blive præsenteret for en login-side. Brugernavn og password vælges her og noteres i tabellen fra tidligere.
+<!-- Docker + docker-compose setup -->
+### Installation af Docker & docker-compose + FDM-Monster
 #### Installation af Docker & docker-compose på Raspberry Pi
-###### For at kunne installere FDM Monster, skal der først installeres Docker på Raspberry Pi. Dette kan gøres ved at følge vejledningen på [Docker's hjemmeside](https://docs.docker.com/engine/install/debian/). Når Docker er installeret, kan FDM Monster installeres.
-###### Og for docker-compose, følg vejledningen på [Docker's hjemmeside](https://docs.docker.com/compose/install/).
-
-
-#### Installation af FDM Monster - !Forkert brug docker compose + yml fil istedet for docker run!
-###### For at installere FDM Monster, skal der først oprettes en mappe til FDM Monster. Dette kan gøres ved at køre kommandoen `mkdir /home/pi/fdm-monster` i terminalen. Når mappen er oprettet, kan FDM Monster installeres ved at køre kommandoen `docker run -d -p 8080:8080 -v /home/pi/fdm-monster:/data --name fdm-monster fdm-monster/fdm-monster:latest` i terminalen. Dette vil downloade og installere FDM Monster i mappen `/home/pi/fdm-monster`.
-
-###### Når FDM Monster er installeret, kan det tilgås ved at åbne en browser og indtaste `http://<ip-adresse-til-raspberry-pi>:8080` i adresselinjen. Hvis alt er installeret korrekt, vil FDM Monster starte op, og du vil blive præsenteret for en login-side. Brugernavn og password er begge `admin`. 
-
-###### Når du er logget ind, vil du blive præsenteret for FDM Monster dashboard. Her kan du tilføje de 3D-printere, som du tidligere har opsat i Octoprint. 
-
-###### For at tilføje en 3D-printer, skal du klikke på `Add Printer` og udfylde felterne med informationen fra tabellen, som du tidligere har udfyldt. Når du har tilføjet en 3D-printer, vil den blive vist på dashboardet, og du vil kunne se status for printeren, samt starte og stoppe printjobs. Hvis du har tilføjet flere 3D-printere, vil de alle blive vist på dashboardet, og du vil kunne se status for hver enkelt printer, samt starte og stoppe printjobs for hver enkelt printer.
-
+###### For at kunne installere FDM Monster, skal der først installeres Docker & Docker-compose på Raspberry Pi. Dette kan gøres ved at følge vejledningen på Dockers hjemmeside: [32bit-RPI-OS](https://docs.docker.com/engine/install/raspberry-pi-os/) eller [64bit-RPI-OS](https://docs.docker.com/engine/install/debian/). Når docker og docker-compose er installeret, kan FDM Monster installeres.
+<!-- FDM-Monster setup -->
+#### Installation af FDM Monster (også med mulighed for windows/linux service baseret installation).
+###### For at installere FDM Monster, følg dokumentation/guiden på [FDM-Monster Documentation](https://docs.fdm-monster.net/docs).
+<!-- FDM-Monster first startup -->
+#### FDM-Monster første opstart
+###### Når FDM Monster er installeret, kan det tilgås ved at åbne en browser og indtaste `http://ip-adresse-til-raspberry-pi:8080` i adresselinjen. Hvis alt er installeret korrekt, vil FDM Monster starte op, og du vil blive præsenteret for en login-side. Brugernavn og password vælges begge ved første login. 
+<!-- FDM-Monster first login -->
+###### Når du er logget ind, vil du blive præsenteret for FDM Monster dashboard. Her kan du tilføje de 3D-printere, som du tidligere har opsat i Octoprint.
+<!-- FDM-Monster printer setup -->
+###### For at tilføje en 3D-printer, skal du klikke på `Add Printer` og udfylde felterne med informationen fra tabellen, som du tidligere har udfyldt. Når du har tilføjet en 3D-printer, vil den blive vist på dashboardet, og du vil kunne se status for printeren, samt starte og stoppe printjobs. Hvis du har tilføjet flere 3D-printere, vil de alle blive vist på dashboardet, og du vil kunne se status, samt starte og stoppe printjobs for hver enkelt printer.
+<!-- FDM-Monster first use of FDM-Monster -->
 ###### Hvis alt er opsat korrekt, vil du nu have en multi-printerstyring, hvor du kan styre flere 3D-printere fra en enkelt Raspberry Pi.
 
 <!-- Mangler - Opsætning af python script & database -->
@@ -176,7 +180,6 @@ echo "SUBSYSTEM==\"tty\", ATTRS{idVendor}==\"0403\", ATTRS{idProduct}==\"6001\",
 #### <s>Tabel til Notater (Opsætning af Octoprint Services)</s>
 #### <s>Installationsscript til guided/automatisk opsætning af Octoprint Services</s>
 #### <s>Installationsscript til guided fuld opsætning af raspberry pi</s>
-
 
 <!-- Under Udvikling! -->
 ### ⚠️ Under Udvikling!
